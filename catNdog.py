@@ -5,6 +5,7 @@ import numpy as np
 import time
 
 cur = time.time()
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 image_width = 64
 image_height = 64
@@ -59,7 +60,6 @@ optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 
 for epoch in range(10):
@@ -67,26 +67,26 @@ for epoch in range(10):
     print("epoch-", epoch + 1, ":", cost_val)
 print("enc")
 
-image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set")
+image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
 for img in image_file_list:
     if 'cat' in img:
         image_label.append(0)
-    else:
+    elif 'dog' in img:
         image_label.append(1)
 
-    im = Image.open("t_set\cat.4001.jpg")
+    im = Image.open(img)
     im = im.resize((image_width, image_height))
     All_image.append(np.float32(im))
 label = np.eye(2)[image_label]
 
 predict = tf.argmax(model, 1)
-original = tf.arg_max(Y, 1)
+original = tf.argmax(Y, 1)
 is_correct = tf.equal(predict, original)
 
 print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
-print(sess.run(original, feed_dict={Y: image_label}))
+print(sess.run(original, feed_dict={Y: label}))
 
 accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
-print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: image_label, keep_prob: 1}))
+print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
 
 print(time.time() - cur, "sec spend")
