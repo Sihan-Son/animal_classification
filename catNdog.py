@@ -18,7 +18,7 @@ for img in image_file_list:
     else:
         image_label.append(1)
 
-    im = Image.open("img")
+    im = Image.open(img)
     im = im.resize((image_width, image_height))
     All_image.append(np.float32(im))
 label = np.eye(2)[image_label]
@@ -46,7 +46,7 @@ L3 = tf.nn.max_pool(L3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME'
 
 W4 = tf.Variable(tf.random_normal([8 * 8 * 32, 32], stddev=-0.01))
 L4 = tf.reshape(L3, [-1, 8 * 8 * 32])
-L4 = tf.nn.matmul(L4, W4)
+L4 = tf.matmul(L4, W4)
 L4 = tf.nn.relu(L4)
 L4 = tf.nn.dropout(L4, keep_prob)
 
