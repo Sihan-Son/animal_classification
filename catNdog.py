@@ -18,7 +18,7 @@ for img in image_file_list:
     else:
         image_label.append(1)
 
-    im = Image.open("t_set\cat.4001.jpg")
+    im = Image.open("img")
     im = im.resize((image_width, image_height))
     All_image.append(np.float32(im))
 label = np.eye(2)[image_label]
@@ -59,6 +59,8 @@ optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
 
 for epoch in range(10):
     _, cost_val = sess.run([optimizer, cost], feed_dict={X: All_image, Y: label, keep_prob: 0.7})
