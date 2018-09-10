@@ -24,7 +24,7 @@ for img in image_file_list:
     All_image.append(np.float32(im))
 label = np.eye(2)[image_label]
 
-print("Resizing is end")
+print("Resizing is end", time.time() - cur, "sec is spend")
 
 X = tf.placeholder(tf.float32, [None, image_width, image_height, 3])
 Y = tf.placeholder(tf.float32, [None, 2])
@@ -61,7 +61,6 @@ init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
 
-
 for epoch in range(10):
     _, cost_val = sess.run([optimizer, cost], feed_dict={X: All_image, Y: label, keep_prob: 0.7})
     print("epoch-", epoch + 1, ":", cost_val)
@@ -71,7 +70,7 @@ image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classificat
 for img in image_file_list:
     if 'cat' in img:
         image_label.append(0)
-    elif 'dog' in img:
+    else:
         image_label.append(1)
 
     im = Image.open(img)
