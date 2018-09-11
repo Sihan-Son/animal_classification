@@ -15,3 +15,8 @@
 ## 패키지 버전에 맞춰 설치 하는 법
 1. console을 실행
 2. pip install -r requirements.txt
+
+## 패키지 변경이 있을 경우 
+1. pip freeze > requirements.txt
+2. 커밋 후 push
+3. 버전은 항상 맞춰 
