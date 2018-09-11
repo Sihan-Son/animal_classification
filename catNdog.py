@@ -68,12 +68,12 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
     for epoch in range(training_epochs):
-        batch = int(len(All_image)/batch_size)
+        batch = int(len(All_image) / batch_size)
 
         for i in range(batch):
-            batch_x, batch_y = All_image[i:i+batch], label[i:i+batch]
+            batch_x, batch_y = All_image[i:i + batch], label[i:i + batch]
             _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
-        print("epoch-", epoch + 1, ":", cost_val)
+        print("epoch- %2d : %.6f" % (epoch + 1, cost_val))
 
     image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
 
