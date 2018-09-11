@@ -3,6 +3,9 @@ from PIL import Image
 import glob
 import numpy as np
 import time
+import os
+
+os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 
 cur = time.time()
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
