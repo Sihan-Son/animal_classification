@@ -88,6 +88,8 @@ optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 batch_size = 10
 # TODO 뭔지 정확히 해서 주석 추가 할것
 training_epochs = 15
+# 학습 시간 확인
+learning_time = time.time()
 
 # tensorflow 구동을 위해 세션 열기
 with tf.Session() as sess:
@@ -102,6 +104,7 @@ with tf.Session() as sess:
             batch_x, batch_y = All_image[i:i + batch], label[i:i + batch]
             _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
         print("epoch- %2d : %.6f" % (epoch + 1, cost_val))
+    print(time.time() - learning_time, "sec")
 
     # 테스트용 데이터 읽어 오기
     image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
