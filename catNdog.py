@@ -22,9 +22,9 @@ for img in image_file_list:
     else:
         image_label.append(1)
 
-    im = Image.open(img)
-    im = im.resize((image_width, image_height))
-    All_image.append(np.float32(im))
+    image = Image.open(img)
+    image = image.resize((image_width, image_height))
+    All_image.append(np.float32(image))
 label = np.eye(2)[image_label]
 
 print("Resizing is end", time.time() - cur, "sec is spend")
@@ -76,9 +76,9 @@ for img in image_file_list:
     else:
         image_label.append(1)
 
-    im = Image.open(img)
-    im = im.resize((image_width, image_height))
-    All_image.append(np.float32(im))
+    image = Image.open(img)
+    image = image.resize((image_width, image_height))
+    All_image.append(np.float32(image))
 label = np.eye(2)[image_label]
 
 predict = tf.argmax(model, 1)
