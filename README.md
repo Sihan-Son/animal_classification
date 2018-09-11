@@ -9,3 +9,9 @@
 6. image ver=1.5.24
 7. Django ver=2.1.1
 8. glob
+
+
+
+## 패키지 버전에 맞춰 설치 하는 법
+1. console을 실행
+2. pip install -r requirements.txt
