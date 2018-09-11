@@ -13,7 +13,7 @@
 
 
 ## 패키지 버전에 맞춰 설치 하는 법
-1. console을 실행
+1. console(Terminal, Python console X)
 2. pip install -r requirements.txt
 
 ## 패키지 변경이 있을 경우 
