@@ -26,7 +26,7 @@ image_label = []
 All_image = []
 
 # 이미지 데이터를 불러올 경로
-image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\t_set\*.jpg")
+image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\data\\t_set\*.jpg")
 
 # 이미지 리사이징 및 라벨링
 for img in image_file_list:
@@ -107,7 +107,7 @@ with tf.Session() as sess:
     print(time.time() - learning_time, "sec")
 
     # 테스트용 데이터 읽어 오기
-    image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
+    image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\data\\a_set\*.jpg")
 
     # 이미지 리사이징 및 라벨링
     for img in image_file_list:
