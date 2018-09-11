@@ -16,6 +16,7 @@ image_label = []
 All_image = []
 
 image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\t_set\*.jpg")
+
 for img in image_file_list:
     if 'cat' in img:
         image_label.append(0)
@@ -60,35 +61,42 @@ model = tf.matmul(L4, W5)
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=model, labels=Y))
 optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 
-init = tf.global_variables_initializer()
-sess = tf.Session()
-sess.run(init)
+batch_size = 10
+training_epochs = 15
 
-for epoch in range(10):
-    _, cost_val = sess.run([optimizer, cost], feed_dict={X: All_image, Y: label, keep_prob: 0.7})
-    print("epoch-", epoch + 1, ":", cost_val)
-print("enc")
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
 
-image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
-for img in image_file_list:
-    if 'cat' in img:
-        image_label.append(0)
-    else:
-        image_label.append(1)
+    for epoch in range(training_epochs):
+        batch = int(len(All_image)/batch_size)
 
-    image = Image.open(img)
-    image = image.resize((image_width, image_height))
-    All_image.append(np.float32(image))
-label = np.eye(2)[image_label]
+        for i in range(batch):
+            batch_x, batch_y = All_image[i:i+batch], label[i:i+batch]
+            _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
+        print("epoch-", epoch + 1, ":", cost_val)
 
-predict = tf.argmax(model, 1)
-original = tf.argmax(Y, 1)
-is_correct = tf.equal(predict, original)
+    image_file_list = glob.glob("E:\Project\Ai_Club_Project_2018\\animal_classification\\a_set\*.jpg")
 
-print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
-print(sess.run(original, feed_dict={Y: label}))
+    for img in image_file_list:
+        if 'cat' in img:
+            image_label.append(0)
+        else:
+            image_label.append(1)
 
-accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
-print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
+        image = Image.open(img)
+        image = image.resize((image_width, image_height))
+        All_image.append(np.float32(image))
+    label = np.eye(2)[image_label]
 
-print(time.time() - cur, "sec spend")
+    predict = tf.argmax(model, 1)
+    original = tf.argmax(Y, 1)
+
+    is_correct = tf.equal(predict, original)
+    accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+
+    print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
+    print(sess.run(original, feed_dict={Y: label}))
+
+    print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
+
+    print(time.time() - cur, "sec spend")
