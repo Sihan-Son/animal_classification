@@ -20,3 +20,8 @@
 1. pip freeze > requirements.txt
 2. 커밋 후 push
 3. 버전은 항상 맞춰 
+
+## Dataset 
+
+https://www.kaggle.com/rahul897/catsdogs
+링크의 자료를 
