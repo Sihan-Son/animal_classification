@@ -85,7 +85,7 @@ cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=model, labe
 optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 
 # 한번에 처리하는 이미지 수
-batch_size = 10
+batch_size = 15
 # 전체 데이터 반복횟수
 training_epochs = 15
 # 학습 시간 확인
