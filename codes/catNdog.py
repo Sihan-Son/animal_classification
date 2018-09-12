@@ -86,7 +86,7 @@ optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 
 # 한번에 처리하는 이미지 수
 batch_size = 10
-# TODO 뭔지 정확히 해서 주석 추가 할것
+# 전체 데이터 반복횟수
 training_epochs = 15
 # 학습 시간 확인
 learning_time = time.time()
