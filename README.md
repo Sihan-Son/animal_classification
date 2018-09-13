@@ -32,4 +32,6 @@ https://www.kaggle.com/rahul897/catsdogs
 
 
 그래프의 세부구조가 보고 싶으면 codes/boardGraph 경로에 위치한 파일을
-terminal에서 tensorboard --logidr = ./codes/boardGraph를 하면 됩니다
+terminal에서 
+tensorboard --logidr = ./codes/boardGraph
+를 하면 됩니다
