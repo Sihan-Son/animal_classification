@@ -25,3 +25,7 @@
 
 https://www.kaggle.com/rahul897/catsdogs
 링크의 자료를 
+
+
+## 프로젝트 구조
+![TensorGraph](./resource/img/TensorGraph)
