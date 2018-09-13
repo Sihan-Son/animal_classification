@@ -97,6 +97,10 @@ with tf.Session() as sess:
     # 변수 초기화
     sess.run(tf.global_variables_initializer())
 
+    """ 그래프 구조가 바뀌면 주석 풀고 사용해 주세요 """
+    # summary = tf.summary.merge_all()
+    # writer = tf.summary.FileWriter(r'./boardGraph', sess.graph)
+
     # 배치 학습
     for epoch in range(training_epochs):
         batch = int(len(All_image) / batch_size)
