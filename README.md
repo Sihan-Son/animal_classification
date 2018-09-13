@@ -28,4 +28,4 @@ https://www.kaggle.com/rahul897/catsdogs
 
 
 ## 프로젝트 구조
-![TensorGraph](./resource/img/TensorGraph.png)
+![TensorGraph](./resources/img/TensorGraph.png)
