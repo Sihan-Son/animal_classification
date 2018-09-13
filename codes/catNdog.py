@@ -26,7 +26,8 @@ image_label = []
 All_image = []
 
 # 이미지 데이터를 불러올 경로
-image_file_list = glob.glob("E:\Project\Ai_Club\\animal_classfication\data\\t_set\*.jpg")
+img_path = os.getcwd()
+image_file_list = glob.glob(img_path+"\data\\t_set\*.jpg")
 
 # 이미지 리사이징 및 라벨링
 for img in image_file_list:
@@ -41,7 +42,7 @@ for img in image_file_list:
     image = image.resize((image_width, image_height))
     All_image.append(np.float32(image))
 
-# TODO 뭔지 정확히 해서 주석 추가 할것
+# one-hot encoding
 label = np.eye(2)[image_label]
 
 print("Resizing is end", time.time() - cur, "sec is spend")
@@ -107,7 +108,7 @@ with tf.Session() as sess:
     print(time.time() - learning_time, "sec")
 
     # 테스트용 데이터 읽어 오기
-    image_file_list = glob.glob("E:\Project\Ai_Club\\animal_classfication\data\\a_set\*.jpg")
+    image_file_list = glob.glob(img_path+"\data\\a_set\*.jpg")
 
     # 이미지 리사이징 및 라벨링
     for img in image_file_list:
