@@ -111,35 +111,38 @@ with tf.Session() as sess:
         print("epoch- %2d : %.6f" % (epoch + 1, cost_val))
     print(time.time() - learning_time, "sec")
 
-    # 테스트용 데이터 읽어 오기
-    image_file_list = glob.glob(img_path+"\data\\a_set\*.jpg")
+    saver = tf.train.Saver()
+    save_path = saver.save(sess, "./checkpoint/animal.ckpt")
 
-    # 이미지 리사이징 및 라벨링
-    for img in image_file_list:
-        # 라벨링
-        if 'cat' in img:
-            image_label.append(0)
-        else:
-            image_label.append(1)
-
-        image = Image.open(img)
-        image = image.resize((image_width, image_height))
-        All_image.append(np.float32(image))
-    label = np.eye(2)[image_label]
-
-    # 예측값
-    predict = tf.argmax(model, 1)
-    # 실제값
-    original = tf.argmax(Y, 1)
-
-    # 일치 하는지 확인
-    is_correct = tf.equal(predict, original)
-    # 정확도
-    accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
-
-    print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
-    print(sess.run(original, feed_dict={Y: label}))
-
-    print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
-
-    print(time.time() - cur, "sec spend")
+    # # 테스트용 데이터 읽어 오기
+    # image_file_list = glob.glob(img_path+"\data\\a_set\*.jpg")
+    #
+    # # 이미지 리사이징 및 라벨링
+    # for img in image_file_list:
+    #     # 라벨링
+    #     if 'cat' in img:
+    #         image_label.append(0)
+    #     else:
+    #         image_label.append(1)
+    #
+    #     image = Image.open(img)
+    #     image = image.resize((image_width, image_height))
+    #     All_image.append(np.float32(image))
+    # label = np.eye(2)[image_label]
+    #
+    # # 예측값
+    # predict = tf.argmax(model, 1)
+    # # 실제값
+    # original = tf.argmax(Y, 1)
+    #
+    # # 일치 하는지 확인
+    # is_correct = tf.equal(predict, original)
+    # # 정확도
+    # accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+    #
+    # print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
+    # print(sess.run(original, feed_dict={Y: label}))
+    #
+    # print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
+    #
+    # print(time.time() - cur, "sec spend")
