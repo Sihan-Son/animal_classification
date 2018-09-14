@@ -13,8 +13,8 @@ os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 
 # 시간 측정 위한 변수
 cur = time.time()
+
 # gpu 맵핑 확인과 메모리 확인을 위한 구문이니 gpu 버전이 아니면 주석 처리하고 사용하세요
-# sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 # sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
 sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
