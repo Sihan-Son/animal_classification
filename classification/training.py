@@ -30,7 +30,7 @@ All_image = []
 
 # 이미지 데이터를 불러올 경로
 img_path = os.getcwd()
-image_file_list = glob.glob(img_path+"\data\\t_set\*.jpg")
+image_file_list = glob.glob(img_path + "\data\\t_set\*.jpg")
 
 # 이미지 리사이징 및 라벨링
 for img in image_file_list:
@@ -110,8 +110,9 @@ with tf.Session() as sess:
     for epoch in range(training_epochs):
         batch = int(len(All_image) / batch_size)
 
+        np.random.shuffle(All_image)
         for i in range(batch):
-            batch_x, batch_y = All_image[i * batch :(i+1) * batch], label[i * batch :(i+1) * batch]
+            batch_x, batch_y = All_image[i * batch:(i + 1) * batch], label[i * batch:(i + 1) * batch]
             _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
         print("epoch- %2d : %.6f" % (epoch + 1, cost_val))
     print(time.time() - learning_time, "sec")
