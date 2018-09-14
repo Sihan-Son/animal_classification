@@ -9,6 +9,9 @@ import glob
 
 os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
 image_width = 64
 image_height = 64
 # 지도 학습을 위한 라벨
