@@ -13,8 +13,11 @@ os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 
 # 시간 측정 위한 변수
 cur = time.time()
+
 # gpu 맵핑 확인과 메모리 확인을 위한 구문이니 gpu 버전이 아니면 주석 처리하고 사용하세요
 # sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 
 # 리사이징 설정값
 image_width = 64
@@ -45,6 +48,7 @@ for img in image_file_list:
 
 # one-hot encoding
 label = np.eye(2)[image_label]
+print(image_label.count(0))
 
 print("Resizing is end", time.time() - cur, "sec is spend")
 
@@ -87,9 +91,9 @@ cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=model, labe
 optimizer = tf.train.AdadeltaOptimizer(0.001).minimize(cost)
 
 # 한번에 처리하는 이미지 수
-batch_size = 15
+batch_size = 200
 # 전체 데이터 반복횟수
-training_epochs = 15
+training_epochs = 20
 # 학습 시간 확인
 learning_time = time.time()
 
@@ -107,7 +111,7 @@ with tf.Session() as sess:
         batch = int(len(All_image) / batch_size)
 
         for i in range(batch):
-            batch_x, batch_y = All_image[i:i + batch], label[i:i + batch]
+            batch_x, batch_y = All_image[i * batch :(i+1) * batch], label[i * batch :(i+1) * batch]
             _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
         print("epoch- %2d : %.6f" % (epoch + 1, cost_val))
     print(time.time() - learning_time, "sec")
@@ -115,36 +119,37 @@ with tf.Session() as sess:
     # 트레이닝 결과 저장
     saver = tf.train.Saver()
     save_path = saver.save(sess, "./checkpoint/animal.ckpt")
+    print("save ckpt")
 
-    # 테스트용 데이터 읽어 오기
-    image_file_list = glob.glob(img_path+"\data\\a_set\*.jpg")
-
-    # 이미지 리사이징 및 라벨링
-    for img in image_file_list:
-        # 라벨링
-        if 'kitten' in img:
-            image_label.append(0)
-        else:
-            image_label.append(1)
-
-        image = Image.open(img)
-        image = image.resize((image_width, image_height))
-        All_image.append(np.float32(image))
-    label = np.eye(2)[image_label]
-
-    # 예측값
-    predict = tf.argmax(model, 1)
-    # 실제값
-    original = tf.argmax(Y, 1)
-
-    # 일치 하는지 확인
-    is_correct = tf.equal(predict, original)
-    # 정확도
-    accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
-
-    print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
-    print(sess.run(original, feed_dict={Y: label}))
-
-    print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
-
-    print(time.time() - cur, "sec spend")
+    # # 테스트용 데이터 읽어 오기
+    # image_file_list = glob.glob(img_path+"\data\\a_set\*.jpg")
+    #
+    # # 이미지 리사이징 및 라벨링
+    # for img in image_file_list:
+    #     # 라벨링
+    #     if 'kitten' in img:
+    #         image_label.append(0)
+    #     else:
+    #         image_label.append(1)
+    #
+    #     image = Image.open(img)
+    #     image = image.resize((image_width, image_height))
+    #     All_image.append(np.float32(image))
+    # label = np.eye(2)[image_label]
+    #
+    # # 예측값
+    # predict = tf.argmax(model, 1)
+    # # 실제값
+    # original = tf.argmax(Y, 1)
+    #
+    # # 일치 하는지 확인
+    # is_correct = tf.equal(predict, original)
+    # # 정확도
+    # accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+    #
+    # print(sess.run(predict, feed_dict={X: All_image, keep_prob: 1}))
+    # print(sess.run(original, feed_dict={Y: label}))
+    #
+    # print("ACC >> ", sess.run(accuracy, feed_dict={X: All_image, Y: label, keep_prob: 1}))
+    #
+    # print(time.time() - cur, "sec spend")
