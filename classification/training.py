@@ -110,7 +110,9 @@ with tf.Session() as sess:
     for epoch in range(training_epochs):
         batch = int(len(All_image) / batch_size)
 
-        np.random.shuffle(All_image)
+        # p = np.random.permutation(len(image_label))
+        # All_image = All_image[p]
+        # label = label[p]
         for i in range(batch):
             batch_x, batch_y = All_image[i * batch:(i + 1) * batch], label[i * batch:(i + 1) * batch]
             _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.7})
