@@ -1,5 +1,5 @@
 # animal_classification
-
+### tensorflow tutorial cnn 코드 업데이트 
 ## libs for project 
 1. python ver=3.6
 2. tensorflow ver=1.10.0
