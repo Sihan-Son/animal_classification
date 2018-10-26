@@ -1,10 +1,10 @@
 import os
-
 import numpy as np
 import tflearn
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
+
 
 IMG_SIZE = 50
 LR = 1e-5
