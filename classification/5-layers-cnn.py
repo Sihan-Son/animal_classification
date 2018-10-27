@@ -59,9 +59,9 @@ Y = [i[1] for i in train]
 test_x = np.array([i[0] for i in test]).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
 test_y = [i[1] for i in test]
 
-model.fit({'input': X}, {'targets': Y}, n_epoch=6, validation_set=({'input': test_x}, {'targets': test_y}),
+model.fit({'input': X}, {'targets': Y}, n_epoch=20, validation_set=({'input': test_x}, {'targets': test_y}),
           snapshot_step=500, show_metric=True, run_id=MODEL_NAME)
-model.save(".\\test\\" + MODEL_NAME)
+model.save(".\checkPoint_2conv\\" + MODEL_NAME)
 
 
 
