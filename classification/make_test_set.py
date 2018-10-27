@@ -1,3 +1,6 @@
+# Author: sihan
+# Date: 2018-10-26
+
 import os  # dealing with directories
 from random import shuffle  # mixing up or currently ordered data that might lead our network astray in training.
 
