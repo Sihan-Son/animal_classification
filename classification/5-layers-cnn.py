@@ -1,3 +1,6 @@
+# Author: sihan
+# Date: 2018-10-26
+
 import os
 import numpy as np
 import tflearn
