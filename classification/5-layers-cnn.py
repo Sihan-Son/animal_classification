@@ -12,8 +12,12 @@ import tensorflow as tf
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-train_data = np.load("./data/train_data_25000.npy")
-test_data = np.load("./data/test_data_12500.npy")
+
+train_data = np.load("./data/train_data_64_25000.npy")
+test_data = np.load("./data/test_data_proc.npy")
+
+# train_data = np.load("./data/train_data_25000.npy")
+# test_data = np.load("./data/test_data_12500.npy")
 
 IMG_SIZE = 50
 LR = 1e-4
