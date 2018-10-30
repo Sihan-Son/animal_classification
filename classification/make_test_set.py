@@ -8,9 +8,14 @@ import cv2  # working with, mainly resizing, images
 import numpy as np  # dealing with arrays
 from tqdm import tqdm  # a nice pretty percentage bar for tasks. Thanks to viewer Daniel BA1/4hler for this suggestion
 
-TRAIN_DIR = 'E:\Project\Ai_Club\dataSets\\train'
-TEST_DIR = 'E:\Project\Ai_Club\dataSets\\test'
-IMG_SIZE = 50
+# TRAIN_DIR = 'E:\Project\Ai_Club\dataSets\\train'
+# TEST_DIR = 'E:\Project\Ai_Club\dataSets\\test'
+
+TRAIN_DIR = r'E:\Project\dataSet\all\train'
+TEST_DIR = r'E:\Project\dataSet\all\test'
+
+
+IMG_SIZE = 64
 LR = 1e-3
 
 
