@@ -58,7 +58,6 @@ for num, data in enumerate(test_data[:20]):
     y = fig.add_subplot(5, 4, num + 1)
     orig = img_data
     data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
-    # model_out = model.predict([data])[0]
     model_out = model.predict([data])[0]
 
     if np.argmax(model_out) == 1:
