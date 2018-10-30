@@ -2,13 +2,13 @@
 # Date: 2018-10-26
 
 import os
+
 import numpy as np
+import tensorflow as tf
 import tflearn
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
-
-import tensorflow as tf
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
@@ -19,7 +19,7 @@ test_data = np.load("./data/test_data_proc.npy")
 # train_data = np.load("./data/train_data_25000.npy")
 # test_data = np.load("./data/test_data_12500.npy")
 
-IMG_SIZE = 50
+IMG_SIZE = 64
 LR = 1e-4
 MODEL_NAME = 'dogsVScats-{}-{}.model'.format(LR, '2conv-basic')
 
@@ -68,33 +68,3 @@ model.fit({'input': X}, {'targets': Y}, n_epoch=20, validation_set=({'input': te
 model.save(".\checkPoint_2conv\\" + MODEL_NAME)
 
 
-
-# import matplotlib.pyplot as plt
-#
-# test_data = np.load('./data/test_data_12500.npy')
-#
-# fig = plt.figure()
-#
-# for num, data in enumerate(test_data[:12]):
-#     # cat: [1,0]
-#     # dog: [0,1]
-#
-#     img_num = data[1]
-#     img_data = data[0]
-#
-#     y = fig.add_subplot(3, 4, num + 1)
-#     orig = img_data
-#     data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
-#     # model_out = model.predict([data])[0]
-#     model_out = model.predict([data])[0]
-#
-#     if np.argmax(model_out) == 1:
-#         str_label = 'Dog'
-#     else:
-#         str_label = 'Cat'
-#
-#     y.imshow(orig, cmap='gray')
-#     plt.title(str_label)
-#     y.axes.get_xaxis().set_visible(False)
-#     y.axes.get_yaxis().set_visible(False)
-# plt.show()
