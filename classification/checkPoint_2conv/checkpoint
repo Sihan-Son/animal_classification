@@ -1,2 +1,2 @@
-model_checkpoint_path: "E:\\Project\\animal_classification\\classification\\test\\dogsVScats-0.0001-2conv-basic.model"
-all_model_checkpoint_paths: "E:\\Project\\animal_classification\\classification\\test\\dogsVScats-0.0001-2conv-basic.model"
+model_checkpoint_path: "E:\\Project\\animal_classification\\classification\\checkPoint_2conv\\dogsVScats-0.0001-2conv-basic.model"
+all_model_checkpoint_paths: "E:\\Project\\animal_classification\\classification\\checkPoint_2conv\\dogsVScats-0.0001-2conv-basic.model"
