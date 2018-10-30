@@ -14,7 +14,6 @@ from tqdm import tqdm  # a nice pretty percentage bar for tasks. Thanks to viewe
 TRAIN_DIR = r'E:\Project\dataSet\all\train'
 TEST_DIR = r'E:\Project\dataSet\all\test'
 
-
 IMG_SIZE = 64
 LR = 1e-3
 
@@ -39,7 +38,7 @@ def create_train_data(numFile):
         img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
         training_data.append([np.array(img), np.array(label)])
     shuffle(training_data)
-    fileName = './data/train_data_'+str(numFile)+'.npy'
+    fileName = './data/train_data_' + str(numFile) + "_" + str(IMG_SIZE) + '.npy'
     np.save(fileName, training_data)
     return training_data
 
@@ -53,7 +52,7 @@ def create_test_data(numFile):
         img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
         test_data.append([np.array(img), np.array(label)])
     shuffle(test_data)
-    fileName = './data/test2_data_' + str(numFile) + '.npy'
+    fileName = './data/test2_data_' + str(numFile) + str(IMG_SIZE) + '.npy'
     np.save(fileName, test_data)
     return test_data
 
@@ -68,10 +67,10 @@ def process_test_data():
         testing_data.append([np.array(img), img_num])
 
     shuffle(testing_data)
-    np.save('./data/test_data.npy', testing_data)
+    np.save('./data/test_data_proc.npy', testing_data)
     return testing_data
 
 
-# test_data = process_test_data()
-train_data = create_train_data(8000)
-test_data2 = create_test_data(2000)
+test_data = process_test_data()
+# train_data = create_train_data(8000)
+# test_data2 = create_test_data(2000)
