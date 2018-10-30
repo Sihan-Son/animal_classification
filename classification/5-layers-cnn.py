@@ -12,7 +12,6 @@ from tflearn.layers.estimator import regression
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-
 train_data = np.load("./data/train_data_64_25000.npy")
 test_data = np.load("./data/test_data_proc.npy")
 
@@ -21,7 +20,7 @@ test_data = np.load("./data/test_data_proc.npy")
 
 IMG_SIZE = 64
 LR = 1e-4
-MODEL_NAME = 'dogsVScats-{}-{}.model'.format(LR, '2conv-basic')
+MODEL_NAME = 'dogsVScats-{}-{}-{}.model'.format(LR, IMG_SIZE, '2conv-basic')
 
 tf.reset_default_graph()
 
@@ -66,5 +65,3 @@ test_y = [i[1] for i in test]
 model.fit({'input': X}, {'targets': Y}, n_epoch=20, validation_set=({'input': test_x}, {'targets': test_y}),
           snapshot_step=500, show_metric=True, run_id=MODEL_NAME)
 model.save(".\checkPoint_2conv\\" + MODEL_NAME)
-
-
