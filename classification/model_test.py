@@ -1,14 +1,17 @@
 # Created by sihan at 2018-10-30
 
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-import time
-
 import tflearn
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 
 IMG_SIZE = 64
 LR = 1e-4
