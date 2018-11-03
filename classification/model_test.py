@@ -47,7 +47,7 @@ model = tflearn.DNN(convnet, tensorboard_dir='log')
 model.load(r'./checkPoint_2conv/' + MODEL_NAME)
 print('model loaded!')
 
-test_data = np.load('./data/test_data_proc.npy')
+test_data = np.load('./data/test_data_proc_'+str(IMG_SIZE)+'_12500.npy')
 
 fig = plt.figure()
 
