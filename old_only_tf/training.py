@@ -2,12 +2,13 @@
 # Date: 2018-09-10
 
 
+import glob
+import os
+import time
+
+import numpy as np
 import tensorflow as tf
 from PIL import Image
-import glob
-import numpy as np
-import time
-import os
 
 os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 

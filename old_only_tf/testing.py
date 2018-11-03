@@ -1,11 +1,12 @@
 # Author: sihan
 # Date: 2018-09-14
 
+import glob
+import os
+
+import numpy as np
 import tensorflow as tf
 from PIL import Image
-import numpy as np
-import os
-import glob
 
 os.environ['TF_CPP+MIN_LOG_LEVEL'] = '3'
 
