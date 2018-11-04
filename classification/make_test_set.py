@@ -14,8 +14,7 @@ from tqdm import tqdm  # a nice pretty percentage bar for tasks. Thanks to viewe
 TRAIN_DIR = r'E:\Project\dataSet\all\train'
 TEST_DIR = r'E:\Project\dataSet\all\test'
 
-IMG_SIZE = 128
-LR = 1e-3
+IMG_SIZE = 64
 
 
 def label_img(img):
