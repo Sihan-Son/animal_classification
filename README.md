@@ -2,13 +2,13 @@
 ### tensorflow tutorial cnn 코드 업데이트 
 ## libs for project 
 1. python ver=3.6
-2. tensorflow ver=1.10.0
-3. tensoborad ver=1.10.0
-4. numpy ver=1.13.3
-5. matplotlib ver=2.2.3
-6. image ver=1.5.24
-7. Django ver=2.0
-8. glob
+2. tflearn==0.3.2
+3. tensorboard==1.10.0
+4. tensorflow==1.10.0
+5. tensorflow-tensorboard==0.4.0rc2
+6. numpy==1.13.3
+7. opencv-python==3.4.3.18
+
 
 
 
