@@ -71,9 +71,6 @@ class AnimalClassification:
 
         return img_np
 
-    def main(self):
-        self.run_graph()
-
-    if __name__ == "__main__":
-        main()
-
+#
+# test = AnimalClassification(r'D:\Project\1.jpg')
+# print(test.run_graph())

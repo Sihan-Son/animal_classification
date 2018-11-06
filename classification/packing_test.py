@@ -2,5 +2,6 @@
 
 from .packing import AnimalClassification
 
-test = AnimalClassification(r'E:\Project\dataSet\all\test\51.jpg')
+path = r'D:\Project\1.jpg'
+test = AnimalClassification(path)
 print(test.run_graph())
