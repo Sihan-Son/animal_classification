@@ -40,7 +40,7 @@ tensorboard --logidr = ./codes/boardGraph
 
 ## 프로젝트 폴더 구조
 ┌─classification  
-│  ├─AnimalClassification(클래스화 된 그래프 우치)  
+│  ├─AnimalClassification(클래스화 된 그래프 위치)  
 │  │  └─__pycache__  
 │  ├─boardGraph(현재 사용 안 함)  
 │  ├─checkpoint(현재 사용 안 함)  
