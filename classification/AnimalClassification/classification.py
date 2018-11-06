@@ -13,13 +13,15 @@ from tflearn.layers.estimator import regression
 
 class AnimalClassification:
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-    LR = 1e-4
-    IMG_SIZE = 64
+    # LR = 1e-4
+    # IMG_SIZE = 64
     img_path = ""
 
-    def __init__(self, path):
+    def __init__(self, path, LR=1e-4, IMG_SIZE=64):
         tf.reset_default_graph()
         self.img_path = path
+        self.LR = LR
+        self.IMG_SIZE = IMG_SIZE
 
     def run_graph(self):
         MODEL_NAME = 'dogsVScats-{}-{}-{}.model'.format(self.LR, self.IMG_SIZE, '2conv-basic')
