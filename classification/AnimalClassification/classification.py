@@ -70,7 +70,3 @@ class AnimalClassification:
         img_np = np.array(img)
 
         return img_np
-
-#
-# test = AnimalClassification(r'D:\Project\1.jpg')
-# print(test.run_graph())

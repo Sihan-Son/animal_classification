@@ -4,7 +4,7 @@ from classification.AnimalClassification.classification import AnimalClassificat
 import time
 
 now = time.time()
-path = r'D:\Project\1.jpg'
+path = r'../test_file/1.jpg'
 test = AnimalClassification(path)
 print(test.run_graph())
 print(time.time() - now)
