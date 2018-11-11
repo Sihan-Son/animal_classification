@@ -64,7 +64,8 @@ class AnimalClassification:
         else:
             str_label = 'Cat'
 
-        return str_label
+        result_value = [str_label, model_out]
+        return result_value
 
     def resize_img(self):
         img = cv2.imread(self.img_path, cv2.IMREAD_GRAYSCALE)
