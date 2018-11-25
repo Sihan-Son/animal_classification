@@ -1,3 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Photo
+
+
+class PhotoAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (
+            'Photo',
+            {
+                'fields': ['image', 'processed_image', 'comment', ]
+            }
+        ),
+    ]
+
+
+admin.site.register(Photo, PhotoAdmin)
