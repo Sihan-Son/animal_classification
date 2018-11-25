@@ -11,6 +11,7 @@
 5. tensorflow-tensorboard==0.4.0rc2
 6. numpy==1.13.3
 7. opencv-python==3.4.3.18
+8. django==2.1
 
 
 ## 패키지 버전에 맞춰 설치 하는 법
