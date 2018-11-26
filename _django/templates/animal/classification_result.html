@@ -1,0 +1,11 @@
+<h1>검사 결과</h1>
+<img src="{{object.origin.content.url}}" width="auto" height="auto"/>
+{% if object.label == 'Dog' %}
+<p>아마... 개인듯?</p>
+{% elif object.label == 'Cat' %}
+<p>아마... 고냥인듯?</p>
+{% endif %}
+<p>{{object.probability}}%로...</p>
+
+
+<button><a href="{% url 'animal:upload' %}">다른 사진 검사하기</a></button>
