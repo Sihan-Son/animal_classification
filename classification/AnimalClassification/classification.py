@@ -52,7 +52,13 @@ class AnimalClassification:
 
         model = tflearn.DNN(convnet, tensorboard_dir='log')
 
-        model.load(r'./checkPoint_2conv/' + MODEL_NAME)
+        # model.load(r'./checkPoint_2conv/' + MODEL_NAME)
+        # Edit to call anywhere.
+        checkpoint_2conv = os.path.join(os.path.join(r'', os.getcwd()),
+                                        'classification/AnimalClassification/checkPoint_2conv/') + MODEL_NAME
+        print()
+
+        model.load(checkpoint_2conv)
 
         orig = self.resize_img()
         data = orig.reshape(self.IMG_SIZE, self.IMG_SIZE, 1)

@@ -51,11 +51,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = '_django.urls'
 
+TEMPLATES_DIR = '_django.templates'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': ['_django/templates', ],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -114,6 +116,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# URL for media files like photo.
-MEDIA_URL = '/files/'  # path to upload.
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  # directory to save.
+# URL for media files like Image.
+MEDIA_URL = '/media/'  # path to upload.
+MEDIA_ROOT = os.path.join(BASE_DIR, '_django/media')  # directory to save.

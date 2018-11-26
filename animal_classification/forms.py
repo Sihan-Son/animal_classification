@@ -1,9 +1,9 @@
 from django import forms
-from .models import Photo
+
+from animal_classification.models import Image
 
 
-class PhotoForm(forms.ModelForm):
+class UploadImageForm(forms.ModelForm):
     class Meta:
-        model = Photo
-        fields = ('image', 'comment')
-        exclude = ('processed_image', 'uploaded_at',)
+        model = Image
+        fields = ['content', 'comment']

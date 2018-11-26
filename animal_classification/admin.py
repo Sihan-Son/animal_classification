@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from .models import Photo
+from .models import Image
 
 
-class PhotoAdmin(admin.ModelAdmin):
+class ImageAdmin(admin.ModelAdmin):
     fieldsets = [
         (
-            'Photo',
+            'Image',
             {
                 'fields': ['image', 'processed_image', 'comment', ]
             }
@@ -14,4 +14,4 @@ class PhotoAdmin(admin.ModelAdmin):
     ]
 
 
-admin.site.register(Photo, PhotoAdmin)
+admin.site.register(Image, ImageAdmin)

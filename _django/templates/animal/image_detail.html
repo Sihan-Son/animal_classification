@@ -1,0 +1,10 @@
+{% extends 'animal/layout.html' %}
+
+{% block content %}
+{% if image.content %}
+path : {{ image.content.path }}
+url : {{ image.content.url}}
+<img src="{{image.content.url}}" alt=""/>
+{% endif %}
+
+{% endblock %}
