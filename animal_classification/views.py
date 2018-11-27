@@ -1,6 +1,5 @@
 import os
 
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 
@@ -47,7 +46,7 @@ def classify_image(request, pk):
     result = ClassificationResult()
     result.origin = origin_image
     result.label = str(label)
-    probability = probability[0][0]
+    probability = max(probability[0])
     result.probability = float(probability)
 
     try:
